@@ -1,9 +1,8 @@
 #!/bin/bash -e
 
 export BRANCH=master
-export SHIPPABLE_BUILD_NUMBER=latest
 export IMAGE_NAME=shipimg/microbase
-export IMAGE_TAG=$BRANCH.$SHIPPABLE_BUILD_NUMBER
+export IMAGE_TAG=$BRANCH.$BUILD_NUMBER
 export RES_DOCKER_CREDS=docker-creds
 export RES_DOCKER_CREDS_INT=shipDH.json
 export RES_MICRO_REPO=microbase-repo
@@ -11,7 +10,6 @@ export RES_MICRO_IMAGE=microbase-img
 
 dockerBuild() {
   echo "Starting Docker build for" $IMAGE_NAME:$IMAGE_TAG
-  echo "build number is" $BUILD_NUMBER
   cd ./IN/$RES_MICRO_REPO/$RES_MICRO_REPO
   sudo docker build -t=$IMAGE_NAME:$IMAGE_TAG .
   echo "Completed Docker build for" $IMAGE_NAME:$IMAGE_TAG
