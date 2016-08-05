@@ -39,9 +39,9 @@ createOutState() {
 }
 
 main() {
-  dockerLogin
-  dockerBuild
-  dockerPush
+  #dockerLogin
+  #dockerBuild
+  #dockerPush
   createOutState
 }
 
