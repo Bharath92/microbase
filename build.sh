@@ -10,6 +10,7 @@ export MICRO_REPO_NAME=microbase-repo
 
 dockerBuild() {
   echo "Starting Docker build for" $IMAGE_NAME:$IMAGE_TAG
+  cd ./IN/$MICRO_REPO_NAME/$MICRO_REPO_NAME
   sudo docker build -t=$IMAGE_NAME:$IMAGE_TAG .
   echo "Completed Docker build for" $IMAGE_NAME:$IMAGE_TAG
 }
