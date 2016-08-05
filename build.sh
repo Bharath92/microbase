@@ -15,10 +15,13 @@ dockerBuild() {
 
 dockerLogin() {
   echo "Extracting docker creds"
-  cat ./IN/$DOCKER_CREDS_RES/$DOCKER_CREDS_RES_INT | jq -c '[.formJSONValues[] | {name:.label, value:.value}]' > tmp1.txt
-  cat tmp1.txt
-  node ./IN/$MICRO_REPO_NAME/$MICRO_REPO_NAME/extractCreds.js $(cat tmp1.txt) > login.sh
-  . login.sh
+  #cat ./IN/$DOCKER_CREDS_RES/$DOCKER_CREDS_RES_INT | jq -c '[.formJSONValues[] | {name:.label, value:.value}]' > tmp1.txt
+  #node ./IN/$MICRO_REPO_NAME/$MICRO_REPO_NAME/extractCreds.js $(cat tmp1.txt) > login.sh
+
+  cat ./IN/$DOCKER_CREDS_RES/$DOCKER_CREDS_RES_INT  | jq -r '.formJSONValues | map(.label + "=" + .value)|.[]' > dockerInt.sh
+
+  . dockerInt.sh
+  docker login -u $username -p $password
   echo "docker login successful"
 }
 
