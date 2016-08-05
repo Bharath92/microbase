@@ -2,7 +2,7 @@
 
 export BRANCH=master
 export SHIPPABLE_BUILD_NUMBER=latest
-export IMAGE_NAME=shippable/microbase
+export IMAGE_NAME=shipimg/microbase
 export IMAGE_TAG=$BRANCH.$SHIPPABLE_BUILD_NUMBER
 export DOCKER_CREDS_RES=docker-creds
 export DOCKER_CREDS_RES_INT=shipDH.json
