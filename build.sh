@@ -11,6 +11,7 @@ export RES_MICRO_IMAGE=microbase-img
 
 dockerBuild() {
   echo "Starting Docker build for" $IMAGE_NAME:$IMAGE_TAG
+  echo "build number is" $BUILD_NUMBER
   cd ./IN/$RES_MICRO_REPO/$RES_MICRO_REPO
   sudo docker build -t=$IMAGE_NAME:$IMAGE_TAG .
   echo "Completed Docker build for" $IMAGE_NAME:$IMAGE_TAG
