@@ -16,8 +16,7 @@ dockerBuild() {
 dockerLogin() {
   echo "Extracting docker creds"
   cat ./IN/$DOCKER_CREDS_RES/$DOCKER_CREDS_RES_INT
-  node ./IN/$MICRO_REPO_NAME/$MICRO_REPO_NAME/extractCreds.js $(cat ./IN/$DOCKER_CREDS_RES/$DOCKER_CREDS_RES_INT) > tmp.txt
-  cat tmp.txt
+  node ./IN/$MICRO_REPO_NAME/$MICRO_REPO_NAME/extractCreds.js $(cat ./IN/$DOCKER_CREDS_RES/$DOCKER_CREDS_RES_INT)
   echo "docker creds successfully parsed"
 }
 
