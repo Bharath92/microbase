@@ -17,8 +17,9 @@ dockerLogin() {
   echo "Extracting docker creds"
   cat ./IN/$DOCKER_CREDS_RES/$DOCKER_CREDS_RES_INT | jq -c '[.formJSONValues[] | {name:.label, value:.value}]' > tmp1.txt
   cat tmp1.txt
-  node ./IN/$MICRO_REPO_NAME/$MICRO_REPO_NAME/extractCreds.js $(cat tmp1.txt)
-  echo "docker creds successfully parsed"
+  node ./IN/$MICRO_REPO_NAME/$MICRO_REPO_NAME/extractCreds.js $(cat tmp1.txt) > login.sh
+  . login.sh
+  echo "docker login successful"
 }
 
 main() {
