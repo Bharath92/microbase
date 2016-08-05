@@ -33,18 +33,15 @@ dockerLogin() {
 
 createOutState() {
   echo "Creating a state file for" $RES_MICRO_IMAGE
-  echo versionName=$IMAGE_TAG > ./state/$RES_MICRO_IMAGE.env
+  echo versionName=$IMAGE_TAG > /build/state/$RES_MICRO_IMAGE.env
   cat /build/state/$RES_MICRO_IMAGE.env
   echo "Completed creating a state file for" $RES_MICRO_IMAGE
 }
 
 main() {
-  pwd
-  ls -al
-
   dockerLogin
-  #dockerBuild
-  #dockerPush
+  dockerBuild
+  dockerPush
   createOutState
 }
 
