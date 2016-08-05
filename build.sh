@@ -11,8 +11,6 @@ export RES_MICRO_IMAGE=microbase-img
 
 dockerBuild() {
   echo "Starting Docker build for" $IMAGE_NAME:$IMAGE_TAG
-  pwd
-  ls -al
   cd ./IN/$RES_MICRO_REPO/$RES_MICRO_REPO
   sudo docker build -t=$IMAGE_NAME:$IMAGE_TAG .
   echo "Completed Docker build for" $IMAGE_NAME:$IMAGE_TAG
@@ -41,6 +39,9 @@ createOutState() {
 }
 
 main() {
+  pwd
+  ls -al
+
   dockerLogin
   #dockerBuild
   #dockerPush
