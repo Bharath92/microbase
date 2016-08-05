@@ -4,13 +4,14 @@ export BRANCH=master
 export SHIPPABLE_BUILD_NUMBER=latest
 export IMAGE_NAME=shipimg/microbase
 export IMAGE_TAG=$BRANCH.$SHIPPABLE_BUILD_NUMBER
-export DOCKER_CREDS_RES=docker-creds
-export DOCKER_CREDS_RES_INT=shipDH.json
-export MICRO_REPO_NAME=microbase-repo
+export RES_DOCKER_CREDS=docker-creds
+export RES_DOCKER_CREDS_INT=shipDH.json
+export RES_MICRO_REPO=microbase-repo
+export RES_MICRO_IMAGE=microbase-img
 
 dockerBuild() {
   echo "Starting Docker build for" $IMAGE_NAME:$IMAGE_TAG
-  cd ./IN/$MICRO_REPO_NAME/$MICRO_REPO_NAME
+  cd ./IN/$RES_MICRO_REPO/$RES_MICRO_REPO
   sudo docker build -t=$IMAGE_NAME:$IMAGE_TAG .
   echo "Completed Docker build for" $IMAGE_NAME:$IMAGE_TAG
 }
@@ -23,19 +24,25 @@ dockerPush() {
 
 dockerLogin() {
   echo "Extracting docker creds"
-
-  cat ./IN/$DOCKER_CREDS_RES/$DOCKER_CREDS_RES_INT  | jq -r '.formJSONValues | map(.label + "=" + .value)|.[]' > dockerInt.sh
-
+  cat ./IN/$RES_DOCKER_CREDS/$RES_DOCKER_CREDS_INT  | jq -r '.formJSONValues | map(.label + "=" + .value)|.[]' > dockerInt.sh
   . dockerInt.sh
   echo "logging into Docker with username" $username
   docker login -u $username -p $password
-  echo "docker login successful"
+  echo "Completed Docker login"
+}
+
+createOutState() {
+  echo "Creating a state file for" $RES_MICRO_IMAGE
+  echo versionName=$IMAGE_TAG > ./state/$RES_MICRO_IMAGE.env
+  cat ./state/$RES_MICRO_IMAGE.env
+  echo "Completed creating a state file for" $RES_MICRO_IMAGE
 }
 
 main() {
   dockerLogin
   dockerBuild
   dockerPush
+  createOutState
 }
 
 main
