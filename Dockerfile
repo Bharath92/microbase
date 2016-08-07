@@ -40,7 +40,7 @@ RUN curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -
 RUN apt-get update
 
 RUN apt-get install -y nodejs
-RUN npm install -g forever grunt grunt-cli
+RUN npm install -g forever@0.14.2 grunt grunt-cli
 
 RUN echo "================== Adding empty known hosts file =============="
 RUN mkdir -p /root/.ssh
