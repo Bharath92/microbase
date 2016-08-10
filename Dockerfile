@@ -28,7 +28,10 @@ RUN apt-get install -yy build-essential \
                     vim \
                     htop;
 
-RUN apt-get install python-pip;
+RUN apt-get -y install python-pip;
+RUN sudo rm -rf /usr/local/lib/python2.7/dist-packages/requests*
+RUN pip install --upgrade pip
+RUN hash -r
 
 RUN echo "================== Installing python requirements ====="
 RUN mkdir -p /home/shippable/
