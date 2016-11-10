@@ -3,7 +3,7 @@
 export BRANCH=master
 export IMAGE_NAME=shipimg/microbase
 export IMAGE_TAG=$BRANCH.$BUILD_NUMBER
-export RES_DOCKER_CREDS=docker-creds
+export RES_DOCKER_CREDS=shipimg-dockerhub
 export RES_MICRO_REPO=microbase-repo
 export RES_MICRO_IMAGE=microbase-img
 
