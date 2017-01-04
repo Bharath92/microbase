@@ -32,7 +32,6 @@ apt-get install -yy build-essential \
                     make \
                     openssh-client \
                     sudo \
-                    vim \
                     htop;
 
 echo "================= Installing Git ==================="
