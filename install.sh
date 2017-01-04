@@ -4,6 +4,7 @@ dpkg-divert --local --rename --add /sbin/initctl
 locale-gen en_US en_US.UTF-8
 dpkg-reconfigure locales
 
+cd /home/shippable/appBase
 
 echo "================== Adding empty known hosts file =============="
 mkdir -p /root/.ssh
@@ -13,9 +14,6 @@ echo "================== Disabling scrict host checking for ssh ====="
 mv config /root/.ssh/config
 mv 90forceyes /etc/apt/apt.conf.d/
 echo 'ALL ALL=(ALL) NOPASSWD:ALL' | tee -a /etc/sudoers
-
-
-cd /home/shippable/appBase
 
 echo "================= Updating package lists ==================="
 apt-get update
