@@ -77,6 +77,11 @@ wget -v https://api.bintray.com/content/jfrog/jfrog-cli-go/1.4.1/jfrog-cli-linux
 sudo chmod +x jfrog
 mv jfrog /usr/bin/jfrog
 
+echo "================= Adding kubectl 1.5.1 ==================="
+curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.5.1/bin/linux/amd64/kubectl
+chmod +x ./kubectl
+sudo mv ./kubectl /usr/local/bin/kubectl
+
 echo "================= Cleaning package lists ==================="
 apt-get clean
 apt-get autoclean
