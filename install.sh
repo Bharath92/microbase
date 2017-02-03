@@ -60,7 +60,7 @@ apt-get update
 apt-get install -y nodejs
 npm install -g forever@0.14.2 grunt grunt-cli
 
-echo "================= Adding gclould 128.0.0 ============"
+echo "================= Adding gcloud 128.0.0 ============"
 CLOUD_SDK_REPO="cloud-sdk-$(lsb_release -c -s)"
 echo "deb http://packages.cloud.google.com/apt $CLOUD_SDK_REPO main" | sudo tee /etc/apt/sources.list.d/google-cloud-sdk.list
 curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
@@ -81,6 +81,9 @@ echo "================= Adding kubectl 1.5.1 ==================="
 curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.5.1/bin/linux/amd64/kubectl
 chmod +x ./kubectl
 sudo mv ./kubectl /usr/local/bin/kubectl
+
+echo "================= Adding utilities ==================="
+apt-get install -y gettext
 
 echo "================= Cleaning package lists ==================="
 apt-get clean
