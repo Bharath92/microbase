@@ -32,6 +32,7 @@ apt-get install -yy build-essential \
                     make \
                     openssh-client \
                     sudo \
+                    unzip \
                     htop;
 
 echo "================= Installing Git ==================="
@@ -82,8 +83,14 @@ curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.5.1/bin/li
 chmod +x ./kubectl
 sudo mv ./kubectl /usr/local/bin/kubectl
 
+echo "================= Adding terraform ==================="
+curl -LO https://releases.hashicorp.com/terraform/0.8.5/terraform_0.8.5_linux_amd64.zip
+unzip terraform_0.8.5_linux_amd64.zip -d /usr/local/bin/terraform
+echo 'export PATH=$PATH:/usr/local/bin/terraform' >> /root/.bashrc
+
 echo "================= Adding utilities ==================="
-apt-get install -y gettext
+apt-get install -y gettext \
+                   jq
 
 echo "================= Cleaning package lists ==================="
 apt-get clean
