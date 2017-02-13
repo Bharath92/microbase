@@ -88,6 +88,11 @@ curl -LO https://releases.hashicorp.com/terraform/0.8.6/terraform_0.8.6_linux_am
 unzip terraform_0.8.6_linux_amd64.zip -d /usr/local/bin/terraform
 # terraform also requires an alteration of PATH; this is done in the runCLI script
 
+echo "================= Adding packer 0.12.2 ==================="
+curl -LO https://releases.hashicorp.com/packer/0.12.2/packer_0.12.2_linux_amd64.zip
+unzip packer_0.12.2_linux_amd64.zip -d /usr/local/bin/packer
+# packer also requires an alteration of PATH; this is done in the runCLI script
+
 echo "================= Adding utilities ==================="
 apt-get install -y gettext \
                    jq
