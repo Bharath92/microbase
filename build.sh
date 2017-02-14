@@ -56,11 +56,11 @@ dockerhub_login() {
 
 build_tag_push_image() {
   pushd $RES_REPO_STATE
-  echo "Starting Docker build & push for" $IMAGE_NAME:$IMAGE_TAG
+  echo "Starting Docker build & push for $DOCKERHUB_ORG/$IMAGE_NAME:$IMAGE_TAG"
   sed -i "s/{{%TAG%}}/$RES_DRY_TAG_VER_NAME/g" Dockerfile
-  sudo docker build -t=$IMAGE_NAME:$IMAGE_TAG .
-  sudo docker push $IMAGE_NAME:$IMAGE_TAG
-  echo "Completed Docker build & push for" $IMAGE_NAME:$IMAGE_TAG
+  sudo docker build -t="$DOCKERHUB_ORG/$IMAGE_NAME:$IMAGE_TAG" .
+  sudo docker push "$DOCKERHUB_ORG/$IMAGE_NAME:$IMAGE_TAG"
+  echo "Completed Docker build & push for $DOCKERHUB_ORG/$IMAGE_NAME:$IMAGE_TAG"
   popd
 }
 
