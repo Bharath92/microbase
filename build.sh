@@ -16,6 +16,7 @@ export IMAGE_TAG=$RES_DRY_TAG_VER_NAME
 # set the repo path
 export RES_REPO_UP=$(echo $RES_REPO | awk '{print toupper($0)}')
 export RES_REPO_STATE=$(eval echo "$"$RES_REPO_UP"_STATE")
+export RES_REPO_COMMIT=$(eval echo "$"$RES_REPO_UP"_COMMIT")
 
 set_context() {
   echo "CURR_JOB=$CURR_JOB"
@@ -33,6 +34,7 @@ set_context() {
   echo "IMAGE_TAG=$IMAGE_TAG"
   echo "RES_REPO_UP=$RES_REPO_UP"
   echo "RES_REPO_STATE=$RES_REPO_STATE"
+  echo "RES_REPO_COMMIT=$RES_REPO_COMMIT"
 }
 
 build_tag_push_image() {
@@ -48,7 +50,7 @@ build_tag_push_image() {
 create_image_version() {
   echo "Creating a state file for" $RES_IMAGE
   echo versionName=$IMAGE_TAG > /build/state/$RES_IMAGE.env
-  cat /build/state/$RES_IMAGE.env
+  echo REPO_COMMIT_SHA=$RES_REPO_COMMIT >> /build/state/$RES_IMAGE.env
   echo "Completed creating a state file for" $RES_IMAGE
 }
 
