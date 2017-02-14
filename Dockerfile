@@ -1,4 +1,4 @@
-FROM ubuntu:14.04
+FROM drydock/u14:{{%TAG%}}
 MAINTAINER Avi "avi@shippable.com"
 
 ENV DEBIAN_FRONTEND noninteractive
