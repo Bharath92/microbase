@@ -72,6 +72,7 @@ create_image_version() {
 }
 
 main() {
+  set_context
   dockerhub_login
   build_tag_push_image
   create_image_version
