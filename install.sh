@@ -23,6 +23,7 @@ apt-get install -y nodejs
 npm install -g forever@0.14.2 grunt grunt-cli
 
 echo "================= Cleaning package lists ==================="
+apt-get purge libapparmor1
 apt-get clean
 apt-get autoclean
 apt-get autoremove
