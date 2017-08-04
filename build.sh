@@ -41,7 +41,7 @@ build_tag_push_image() {
   pushd $RES_REPO_STATE
   echo "Starting Docker build & push for $DOCKERHUB_ORG/$IMAGE_NAME:$IMAGE_TAG"
   sed -i "s/{{%TAG%}}/$RES_BASE_IMG_VER_NAME/g" Dockerfile
-  sudo docker build -t="$DOCKERHUB_ORG/$IMAGE_NAME:$IMAGE_TAG" .
+  sudo docker build -t="$DOCKERHUB_ORG/$IMAGE_NAME:$IMAGE_TAG" --pull .
   sudo docker push "$DOCKERHUB_ORG/$IMAGE_NAME:$IMAGE_TAG"
   echo "Completed Docker build & push for $DOCKERHUB_ORG/$IMAGE_NAME:$IMAGE_TAG"
   popd
