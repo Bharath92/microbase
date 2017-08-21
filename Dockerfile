@@ -1,4 +1,4 @@
-FROM drydock/u14:{{%TAG%}}
+FROM drydock/u16:arm
 MAINTAINER Avi "avi@shippable.com"
 
 ENV DEBIAN_FRONTEND noninteractive
