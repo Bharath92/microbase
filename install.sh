@@ -28,7 +28,7 @@ cp -Rvf node-v4.8.0-linux-arm64/{bin,include,lib,share} /usr/local
 npm install -g forever@0.14.2 grunt grunt-cli
 
 echo "================= Cleaning package lists ==================="
-apt-get purge libapparmor1
+#apt-get purge libapparmor1 #Yes, do as I say!
 apt-get clean
 apt-get autoclean
 apt-get autoremove
