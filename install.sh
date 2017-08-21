@@ -2,12 +2,15 @@
 
 cd /home/shippable/appBase
 
+chown root:root /tmp
+chmod 1777 /tmp
+
 echo "================= Updating package lists ==================="
 apt-get update -qq
 
 echo "================= Installing core binaries ==================="
 add-apt-repository -y ppa:ubuntu-toolchain-r/test
-echo "deb http://archive.ubuntu.com/ubuntu xenial main universe restricted multiverse" > /etc/apt/sources.list
+#echo "deb http://archive.ubuntu.com/ubuntu xenial main universe restricted multiverse" > /etc/apt/sources.list
 apt-get update -qq
 
 apt-get install -qq -yy g++-4.9
